@@ -1,0 +1,100 @@
+<!-- <p>registration works!</p> -->
+
+<router-outlet></router-outlet>
+
+<!-- <script>
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+</script> -->
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        Username: <br><input formControlName="username" type="text"  name="username" class="username" placeholder="enter user name">
+        <div class="text-warning">
+              <div>
+                username is required
+              </div>
+        </div>
+        
+        <br>
+        <br>
+        
+        First Name:
+        <input formControlName="name" type="text"  name="firstname" class="first-name" placeholder="enter your first name"><br>
+        <div class="text-warning">
+              <div>
+                first name is required
+              </div>
+        </div>
+        
+        <br>
+        <br>
+        
+        Last Name:
+        <input formControlName="name" type="text"  name="lastname" class="last-name" placeholder="enter your last name">
+        <br>
+        <br><br>
+        
+        Email:
+        <input formControlName="email" type="email" name="email" class="email-registration" placeholder="enter your email-id"><br>
+        <div class="text-warning">
+              <div>
+                email-id is required
+              </div>
+        </div>
+        <br>
+        <br>
+        
+        Mobile number:
+        <input formControlName="mobilenum" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="mobile-number" class="mobile-number" placeholder="enter your mobile number"><br>
+        <!-- <div class="text-warning">
+              <div>
+                mobile number is required
+              </div>
+        </div> --><br>
+        <br>
+
+        Date of Birth: 
+        <input formControlName="dob" type="date" name="dateofbirth" class="dob" placeholder="Date of Birth"><br>
+        <div class="text-warning">
+              <div>
+                Date of birth is required
+              </div>
+        </div>
+        <br>
+        <br>
+		
+        Password:
+        <input formControlName="password" type="password" name="password" class="password-registration" placeholder="enter your password"><br>
+        <div class="text-warning">
+              <div>
+                password is required
+              </div>
+        </div><br>
+        <br>
+		
+        Gender:
+        <input type="radio" name="gender" value="male"> Male <input type="radio" name="gender" value="female"> Female<input type="radio" name="gender" value="other"> Other
+        <br>
+        
+
+        <input type="submit" (click)=[onSubmit]  value="Register" name="registration" class="registration-button" placeholder="Register">
+        
+    </form>
+</div>
+
+<script>
+    
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    if(age<14)
+    return "You are young, try again when your 14 years old";
+
+}
+</script>
