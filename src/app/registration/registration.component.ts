@@ -9,10 +9,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   registerForm : FormGroup;
+  submitted = false;
+  constructor ( private formbuilder:FormBuilder) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.registerForm = this.formbuilder.group({
       username : ["" , Validators.required],
       firstname: ["" , Validators.required],
@@ -22,6 +22,20 @@ export class RegistrationComponent implements OnInit {
       dob: ["" ,[ Validators.required ]],
       password : ["" , Validators.required],
       gender:["" , Validators.required]
+    });
+  }
+
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    this.user.registerUser(this.registerForm.value).subscribe( async ( formData ) => {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    return await formData;
     });
   }
 
